@@ -1,0 +1,33 @@
+---
+title: "Introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(raphaelle.hue.m1ecap)
+```
+
+## test fonction 1 : filtrer les données
+```{r}
+appartements <- filter_by_type(paris_housing_prices_dataset, "Apartment")
+head(appartements)
+```
+
+## test fonction 2 : prix moyen par arrondissement
+```{r}
+mean_price_by_group(paris_housing_prices_dataset, "Arrondissement")
+```
+
+## test fonction 3 : graphqiue prix moyen 
+```{r}
+plot_mean_price(paris_housing_prices_dataset, "Property_Type")
+```
+  
