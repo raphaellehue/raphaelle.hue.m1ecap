@@ -17,3 +17,9 @@ LazyData: true
 Imports: 
     ggplot2,
     stats
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
