@@ -15,7 +15,7 @@ filter_by_type <- function(data, type) {
 #' @return Un data frame avec le prix moyen par groupe
 #' @export
 mean_price_by_group <- function(data, groupe) {
-  aggregate(Price_EUR ~ get(groupe), data = data, FUN = mean)
+  stats::aggregate(Price_EUR ~ get(groupe), data = data, FUN = mean)
 }
 
 #' Graphique du prix moyen par arrondissement
@@ -28,9 +28,9 @@ plot_mean_price <- function(data, groupe) {
   result <- mean_price_by_group(data, groupe)
   colnames(result) <- c("groupe", "Prix_moyen")
 
-  ggplot2::ggplot(result, ggplot2::aes(x = as.factor(groupe), y = Prix_moyen)) +
+  ggplot2::ggplot(result, ggplot2::aes(x = as.factor(groupe), y = .data$Prix_moyen)) +
     ggplot2::geom_bar(stat = "identity", fill = "steelblue") +
     ggplot2::labs(title = paste("Prix moyen par", groupe),
-                  x = groupe, y = "Prix moyen") +
+                  x = groupe, y = "Prix moyen (EUR)") +
     ggplot2::theme_minimal()
 }
